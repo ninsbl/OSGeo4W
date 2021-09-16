@@ -19,6 +19,8 @@ MM=${MM//./}
 # 	;;
 # esac
 
+cd $(dirname "$0")
+
 [ -f $P-$V.tar.gz ] || wget -O $P-$V.tar.gz https://codeload.github.com/OSGeo/grass/tar.gz/previewbranch_8_0
 [ -f ../$P-$V/configure ] || tar -C .. -xzf $P-$V.tar.gz
 [ -f ../$P-$V/patched ] || {
