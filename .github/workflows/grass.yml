@@ -28,8 +28,10 @@ jobs:
           (New-Object System.Net.WebClient).DownloadFile($url, $exe)
           Start-Process ('.\'+$exe) -ArgumentList '-A -g -k -q -s http://download.osgeo.org/x86_64 -P proj-devel,gdal-devel,geos-devel,libtiff-devel,libpng-devel,pdal-devel,pdal,pdal-libs,netcdf-devel,cairo-devel,fftw,freetype-devel,gdal-ecw,gdal-mrsid,liblas-devel,libxdr,libpq-devel,pdcurses,python3-matplotlib,python3-numpy,python3-ply,python3-pywin32,python3-six,python3-wxpython,regex-devel,wxwidgets-devel,zstd-devel' -Wait
       - name: Build GRASS GIS
-        working-directory: ./src/grass-dev/osgeo4w/
-        run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'package.sh') (Get-Location)
+        run: |
+          dir
+          C:\msys64\usr\bin\bash.exe -l package.sh
+        working-directory: ./src/grass-dev/osgeo4w
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'C:\OSGeo4W\opt\grass\grass80.bat'
       - name: Test executing of the grass command in bash
