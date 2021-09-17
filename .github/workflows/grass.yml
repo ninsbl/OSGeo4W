@@ -30,4 +30,4 @@ jobs:
         run: C:\msys64\usr\bin\bash.exe .github/workflows/test_simple.sh
       - name: Print log
         if: ${{ always() }}
-        run: cat $HOME/package.log
+        run: cat /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/package.log
