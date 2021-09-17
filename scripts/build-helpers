@@ -267,6 +267,10 @@ fetchdeps() {
 
 	echo "fdep 6"
 
+	cygpath -am $OSGEO4W_REP
+	cygpath -am $OSGEO4W_PWD/osgeo4w
+	cygpath -am $OSGEO4W_REP/package-cache
+
 	local cmd
 	cmd="$OSGEO4W_SCRIPTS/osgeo4w-setup.exe"
 	cmd="$cmd --root $(cygpath -am $OSGEO4W_PWD/osgeo4w)"
