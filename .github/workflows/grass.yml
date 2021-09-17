@@ -5,6 +5,7 @@ on:
   - pull_request
 
 jobs:
+  continue-on-error: true
   build:
     name: ${{ matrix.os }} build and tests
 
