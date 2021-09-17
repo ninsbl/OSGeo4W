@@ -31,11 +31,6 @@ echo " Step 3"
 
 [ -f $P-$V.tar.gz ] || wget -O $P-$V.tar.gz https://codeload.github.com/OSGeo/grass/tar.gz/previewbranch_8_0
 [ -f ../$P-$V/configure ] || tar -C .. -xzf $P-$V.tar.gz
-[ -f ../$P-$V/patched ] || {
-	patch -l -d ../$P-$V -p1 --dry-run <patch
-	patch -l -d ../$P-$V -p1 <patch
-	touch ../$P-$V/patched
-}
 
 echo " Step 4"
 
