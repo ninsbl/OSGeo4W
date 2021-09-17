@@ -60,12 +60,10 @@ echo " Step 7"
 echo " Step 8"
 
 	[ -f msys64/msys2.init ] || {
-		cmd.exe /c bash pacman-key --init
-		pacman-key --init
-		cmd.exe /c bash pacman-key --populate msys2
-		pacman-key --populate msys2
-		cmd.exe /c bash /etc/profile
-		bash /etc/profile
+		cmd.exe /c echo "bash pacman-key --init"
+		cmd.exe /c "bash pacman-key --init"
+		cmd.exe /c "bash pacman-key --populate msys2"
+		cmd.exe /c "bash /etc/profile"
 		touch msys64/msys2.init
 	}
 
