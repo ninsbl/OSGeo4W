@@ -30,4 +30,4 @@ jobs:
         run: C:\msys64\usr\bin\bash.exe .github/workflows/test_simple.sh
       - name: Print log
         if: ${{ always() }}
-        run: cat /home/runneradmin/package.log
+        run: cat $HOME/package.log
