@@ -1,6 +1,6 @@
 diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/env.bat.tmpl ../grass-dev-8.0.0PREV/mswindows/osgeo4w/env.bat.tmpl
---- grass-7.8.6RC1/mswindows/osgeo4w/env.bat.tmpl	2021-05-19 23:27:58.000000000 +0200
-+++ ../grass-7.8.6RC1/mswindows/osgeo4w/env.bat.tmpl	2021-07-11 23:09:54.848823300 +0200
+--- grass-dev-8.0.0PREV/mswindows/osgeo4w/env.bat.tmpl	2021-05-19 23:27:58.000000000 +0200
++++ ../grass-dev-8.0.0PREV/mswindows/osgeo4w/env.bat.tmpl	2021-07-11 23:09:54.848823300 +0200
 @@ -2,8 +2,6 @@
  REM Environmental variables for GRASS OSGeo4W installer
  REM
@@ -22,9 +22,9 @@ diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/env.bat.tmpl ../grass-dev-8.0.0PR
 -IF EXIST "%ProgramFiles%\RStudio\bin\rstudio.exe" set PATH=%PATH%;%ProgramFiles%\RStudio\bin
 -REM set R_USER if %USERPROFILE%\Documents\R\ exists to catch most common cases of private R libraries
 -IF EXIST "%USERPROFILE%\Documents\R\" set R_USER=%USERPROFILE%\Documents\
-diff -ur grass-7.8.6RC1/mswindows/osgeo4w/mklibs.sh ../grass-7.8.6RC1/mswindows/osgeo4w/mklibs.sh
---- grass-7.8.6RC1/mswindows/osgeo4w/mklibs.sh	2021-05-19 23:27:58.000000000 +0200
-+++ ../grass-7.8.6RC1/mswindows/osgeo4w/mklibs.sh	2021-07-11 23:09:54.853823700 +0200
+diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/mklibs.sh ../grass-dev-8.0.0PREV/mswindows/osgeo4w/mklibs.sh
+--- grass-dev-8.0.0PREV/mswindows/osgeo4w/mklibs.sh	2021-05-19 23:27:58.000000000 +0200
++++ ../grass-dev-8.0.0PREV/mswindows/osgeo4w/mklibs.sh	2021-07-11 23:09:54.853823700 +0200
 @@ -1,31 +1,14 @@
  #!/bin/sh
  
@@ -71,8 +71,8 @@ diff -ur grass-7.8.6RC1/mswindows/osgeo4w/mklibs.sh ../grass-7.8.6RC1/mswindows/
  done
 +
 diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0PREV/mswindows/osgeo4w/package.sh
---- grass-7.8.6RC1/mswindows/osgeo4w/package.sh	2021-05-19 23:27:58.000000000 +0200
-+++ ../grass-7.8.6RC1/mswindows/osgeo4w/package.sh	2021-07-14 08:50:04.453753400 +0200
+--- grass-dev-8.0.0PREV/mswindows/osgeo4w/package.sh	2021-05-19 23:27:58.000000000 +0200
++++ ../grass-dev-8.0.0PREV/mswindows/osgeo4w/package.sh	2021-07-14 08:50:04.453753400 +0200
 @@ -1,7 +1,5 @@
  #!/usr/bin/bash
  
@@ -276,8 +276,8 @@ diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0PREV
  
  log
 diff -ur grass-dev-8.0.0PREV/mswindows/osgeo4w/postinstall.bat ../grass-dev-8.0.0PREV/mswindows/osgeo4w/postinstall.bat
---- grass-7.8.6RC1/mswindows/osgeo4w/postinstall.bat	2021-05-19 23:27:58.000000000 +0200
-+++ ../grass-7.8.6RC1/mswindows/osgeo4w/postinstall.bat	2021-07-11 23:09:54.866823800 +0200
+--- grass-dev-8.0.0PREV/mswindows/osgeo4w/postinstall.bat	2021-05-19 23:27:58.000000000 +0200
++++ ../grass-dev-8.0.0PREV/mswindows/osgeo4w/postinstall.bat	2021-07-11 23:09:54.866823800 +0200
 @@ -1,10 +1,12 @@
  set ICON=%OSGEO4W_ROOT%\apps\grass\grass@POSTFIX@\gui\icons\grass_osgeo.ico
  set BATCH=%OSGEO4W_ROOT%\bin\@GRASS_EXECUTABLE@.bat
