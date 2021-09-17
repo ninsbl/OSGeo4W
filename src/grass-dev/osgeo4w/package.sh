@@ -101,8 +101,14 @@ echo " Step 9"
 echo " Step 10"
 
 	cd ../$P-$V
+	ls ./
 
 echo " Step 11"
+
+	echo $xtrace
+	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash)"
+	ls "$(cygpath -aw $OSGEO4W_PWD/msys64)"
+	ls "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin)"
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
