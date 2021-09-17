@@ -6,7 +6,7 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 export OSGEO4W_REP=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 
-branch=previewbranch_8_0
+branch=releasebranch_7_8
 
 cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 
@@ -109,7 +109,7 @@ echo " Step 11"
 	ls mswindows/osgeo4w
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash)"
-	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash)" $xtrace mswindows/osgeo4w/package.sh
+	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
 
 echo " Step 12"
