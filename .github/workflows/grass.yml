@@ -5,7 +5,6 @@ on:
   - pull_request
 
 jobs:
-  continue-on-error: true
   build:
     name: ${{ matrix.os }} build and tests
 
@@ -17,6 +16,7 @@ jobs:
       fail-fast: false
 
     steps:
+      continue-on-error: true
       - name: Set git to use LF
         run: |
           git config --global core.autocrlf false
