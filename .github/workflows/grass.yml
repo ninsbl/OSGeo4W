@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
 
     steps:
-      continue-on-error: true
       - name: Set git to use LF
         run: |
           git config --global core.autocrlf false
@@ -25,9 +24,10 @@ jobs:
       - name: Build GRASS GIS
         working-directory: ./src/grass-dev/osgeo4w/
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
-      - name: Print log
-        run: cat /home/runneradmin/package.log
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'C:\OSGeo4W\opt\grass\grass80.bat'
       - name: Test executing of the grass command in bash
         run: C:\msys64\usr\bin\bash.exe .github/workflows/test_simple.sh
+      - name: Print log
+        if: ${{ always() }}
+        run: cat /home/runneradmin/package.log
