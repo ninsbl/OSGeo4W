@@ -34,6 +34,12 @@ echo " Step 3"
 [ -f $P-$V.tar.gz ] || wget -O $P-$V.tar.gz https://codeload.github.com/OSGeo/grass/tar.gz/$branch
 [ -f ../$P-$V/configure ] || tar -C .. -xzf $P-$V.tar.gz
 [ -d ../grass-$branch -a ! -d ../$P-$V ] | mv ../grass-$branch ../$P-$V
+[ -f ../$P-$V/patched ] || {
+	patch -l -d ../$P-$V -p1 --dry-run <patch
+	patch -l -d ../$P-$V -p1 <patch
+	touch ../$P-$V/patched
+}
+
 echo " Step 4"
 
 msysarch=msys2-base-x86_64-20210604.tar.xz
