@@ -1,0 +1,30 @@
+name: GRASS_8_0_preview
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: ${{ matrix.os }} build and tests
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - windows-2019
+      fail-fast: false
+
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: actions/checkout@v2
+      - name: Build GRASS GIS
+        run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\run.sh') (Get-Location)
+        working-directory: ./.github/workflows
+      - name: Test executing of the grass command
+        run: .github/workflows/test_simple.bat 'C:\OSGeo4W\opt\grass\grass80.bat'
+      - name: Test executing of the grass command in bash
+        run: C:\msys64\usr\bin\bash.exe .github/workflows/test_simple.sh
