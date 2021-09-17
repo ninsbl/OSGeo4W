@@ -8,7 +8,11 @@ source /d/a/OSGeo4W/OSGeo4W/scripts/build-helpers
 
 set -o | grep -s "xtrace[	 ]*on" && xtrace=-x || true
 
+echo " Step 1"
+
 startlog
+
+echo " Step 2"
 
 MM=${V%.*}
 MM=${MM//./}
@@ -19,7 +23,7 @@ MM=${MM//./}
 # 	;;
 # esac
 
-cd $(dirname "$0")
+echo " Step 3"
 
 [ -f $P-$V.tar.gz ] || wget -O $P-$V.tar.gz https://codeload.github.com/OSGeo/grass/tar.gz/previewbranch_8_0
 [ -f ../$P-$V/configure ] || tar -C .. -xzf $P-$V.tar.gz
@@ -29,22 +33,32 @@ cd $(dirname "$0")
 	touch ../$P-$V/patched
 }
 
+echo " Step 4"
+
 msysarch=msys2-base-x86_64-20210604.tar.xz
 
 [ -f $msysarch ] || wget http://repo.msys2.org/distrib/x86_64/$msysarch
 [ -d msys64 ] || tar xJf $msysarch
+
+echo " Step 5"
 
 (
 	fetchenv osgeo4w/bin/o4w_env.bat
 	export OSGEO4W_ROOT_MSYS="${OSGEO4W_ROOT//\\/\/}"
 	export OSGEO4W_ROOT_MSYS="/${OSGEO4W_ROOT_MSYS:0:1}/${OSGEO4W_ROOT_MSYS:3}"
 
+echo " Step 6"
+
 	export VCPATH=$(
 		vs2019env
 		echo ${PATH//\/cygdrive/}
 	)
 
+echo " Step 7"
+
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
+
+echo " Step 8"
 
 	[ -f msys64/msys2.init ] || {
 		cmd.exe /c bash pacman-key --init
@@ -52,6 +66,8 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 		cmd.exe /c bash /etc/profile
 		touch msys64/msys2.init
 	}
+
+echo " Step 9"
 
 	cmd.exe /c pacman --noconfirm -Syuu --needed
 	cmd="pacman --noconfirm -S --needed \
@@ -78,10 +94,16 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
 
+echo " Step 10"
+
 	cd ../$P-$V
+
+echo " Step 11"
 
 	cmd.exe /c $(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh
 )
+
+echo " Step 12"
 
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
