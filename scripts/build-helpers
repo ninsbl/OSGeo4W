@@ -220,12 +220,17 @@ declare -x setuppid
 fetchdeps() {
 	local p missing
 
+	echo "fdep 1"
+
 	if [ -d "$OSGEO4W_PWD/osgeo4w" ]; then
 		missing=
 		for p in "$@"; do
 			if [ -f "$OSGEO4W_PWD/osgeo4w/etc/setup/$p.lst.gz" ]; then
 				continue
 			fi
+
+	echo "fdep 2"
+
 
 			missing="$missing $p"
 		done
@@ -238,20 +243,29 @@ fetchdeps() {
 		fi
 	fi
 
+	echo "fdep 3"
+
+
 	if ! [ -x "$OSGEO4W_SCRIPTS/osgeo4w-setup.exe" ]; then
 		curl --output "$OSGEO4W_SCRIPTS/osgeo4w-setup.exe" $MASTER_REPO/osgeo4w-setup.exe
 		chmod a+x "$OSGEO4W_SCRIPTS/osgeo4w-setup.exe"
 	fi
 
+	echo "fdep 4"
+
 	if ! regen; then
 		log "regen failed"
 	fi
+
+	echo "fdep 5"
 
 	local pid=$(setuppid)
 	if [ -n "$pid" ]; then
 		log "osgeo4w-setup still running"
 		false
 	fi
+
+	echo "fdep 6"
 
 	local cmd
 	cmd="$OSGEO4W_SCRIPTS/osgeo4w-setup.exe"
@@ -270,12 +284,18 @@ fetchdeps() {
 	cmd="$cmd -s $MASTER_REPO"
 	cmd="$cmd -l $(cygpath -am $OSGEO4W_REP/package-cache)"
 
+	echo "fdep 7"
+
 	for p in "$@"; do
 		cmd="$cmd -P $p"
 	done
 
+	echo "fdep 8"
+
 	log "OSGEO4W:$cmd"
 	$cmd
+
+	echo "fdep 9"
 
 	missing=
 	for p in "$@"; do
@@ -283,8 +303,12 @@ fetchdeps() {
 			continue
 		fi
 
+	echo "fdep 10"
+
 		missing="$missing $p"
 	done
+
+	echo "fdep 11"
 
 	if [ -z "$missing" ]; then
 		return 0
