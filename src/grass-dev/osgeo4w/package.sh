@@ -5,8 +5,9 @@ export MAINTAINER=JuergenFischer
 export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel libpq-devel libtiff-devel sqlite3-devel zstd-devel python3-core python3-six python3-pywin32 liblas-devel python3-wxpython"
 
 export OSGEO4W_REP="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
-export OSGEO4W_ROOT_MSYS=$(cygpath -mw "$OSGEO4W_ROOT_MSYS")
-export OSGEO4W_ROOT="$OSGEO4W_REP"
+
+OSGEO4W_ROOT_MSYS="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+OSGEO4W_ROOT=$(cygpath -mw "$OSGEO4W_ROOT_MSYS")
 
 branch=previewbranch_8_0
 
