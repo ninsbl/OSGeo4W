@@ -26,7 +26,7 @@ jobs:
           git config --global core.eol lf
       - uses: actions/checkout@v2
       - name: Set env
-        run: cygpath -amw "$OSGEO4W_ROOT_MSYS" >> $GITHUB_ENV
+        run: echo "OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")" >> $GITHUB_ENV
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
         working-directory: ./src/grass-dev/osgeo4w/
