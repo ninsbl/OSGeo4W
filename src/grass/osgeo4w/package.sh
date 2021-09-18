@@ -39,9 +39,9 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
 
 	[ -f msys64/msys2.init ] || {
-		cmd.exe /c bash pacman-key --init
-		cmd.exe /c bash pacman-key --populate msys2
-		cmd.exe /c bash /etc/profile
+		cmd.exe /c "bash pacman-key --init"
+		cmd.exe /c "bash pacman-key --populate msys2"
+		cmd.exe /c "bash /etc/profile"
 		touch msys64/msys2.init
 	}
 
@@ -72,7 +72,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 
 	cd ../$P-$V
 
-	cmd.exe /c $(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh
+	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
 
 export R=$OSGEO4W_REP/x86_64/release/$P
