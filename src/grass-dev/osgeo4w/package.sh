@@ -83,8 +83,8 @@ cp ../$P-$V/mswindows/osgeo4w/package/$P-$V-1.tar.bz2 $R/$P-$V-$B.tar.bz2
 cp ../$P-$V/COPYING $R/$P-$V-$B.txt
 
 cat <<EOF >$R/setup.hint
-sdesc: "GRASS GIS"
-ldesc: "Geographic Resources Analysis Support System (GRASS GIS)"
+sdesc: "GRASS GIS 8.0 alpha"
+ldesc: "Geographic Resources Analysis Support System (GRASS GIS) 8.0 alpha"
 category: Desktop
 requires: liblas $RUNTIMEDEPENDS avce00 gpsbabel gs python3-gdal python3-matplotlib libtiff python3-wxpython python3-pillow python3-pip python3-ply python3-pyopengl python3-psycopg2-binary python3-six zstd python3-pywin32
 maintainer: $MAINTAINER
