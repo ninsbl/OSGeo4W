@@ -6,8 +6,8 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 export OSGEO4W_REP="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
 
-OSGEO4W_ROOT_MSYS="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
-OSGEO4W_ROOT=$(cygpath -mw "$OSGEO4W_ROOT_MSYS")
+OSGEO4W_ROOT_MSYS="./"
+OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 
 branch=previewbranch_8_0
 
