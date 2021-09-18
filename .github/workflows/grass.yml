@@ -1,0 +1,33 @@
+name: GRASS_8_0_preview
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: ${{ matrix.os }} build and tests
+
+    runs-on: ${{ matrix.os }}
+    env:
+      OSGEO4W_REP: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+      OSGEO4W_ROOT_MSYS: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w"
+      OSGEO4W_ROOT: "$(cygpath -amw "$OSGEO4W_ROOT_MSYS")"
+      OSGEO4W_PWD: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+    strategy:
+      matrix:
+        os:
+          - windows-2019
+      fail-fast: false
+
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: actions/checkout@v2
+      - name: Build GRASS GIS
+        run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
+        working-directory: ./src/grass-dev/osgeo4w/
+      - name: Test executing of the grass command
+        run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/opt/grass/grass80.bat'
