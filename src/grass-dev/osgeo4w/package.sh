@@ -115,6 +115,18 @@ echo " Step 11"
 
 	echo $PATH
 
+	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
+
+[ -d "$OSGEO4W_ROOT_MSYS" ] | echo "OSGEO4W_ROOT_MSYS (${OSGEO4W_ROOT_MSYS}) exists"
+[ -d "$OSGEO4W_ROOT" ] | echo "OSGEO4W_ROOT (${OSGEO4W_ROOT}) exists"
+
+[ -d "$OSGEO4W_ROOT_MSYS" ] | ls "$OSGEO4W_ROOT_MSYS"
+[ -d "$OSGEO4W_ROOT" ] | ls "$OSGEO4W_ROOT"
+
+
+[ -d "$OSGEO4W_ROOT_MSYS" ] || echo "OSGEO4W_ROOT_MSYS (${OSGEO4W_ROOT_MSYS}) does not exist"
+[ -d "$OSGEO4W_ROOT" ] || echo "OSGEO4W_ROOT (${OSGEO4W_ROOT}) does not exist"
+
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash)"
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
