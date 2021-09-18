@@ -6,12 +6,15 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 export OSGEO4W_REP="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
 
-OSGEO4W_ROOT_MSYS="./"
-OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
+OSGEO4W_ROOT_MSYS="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w"
+OSGEO4W_ROOT="$(cygpath -amw "$OSGEO4W_ROOT_MSYS")"
 
 branch=previewbranch_8_0
 
-cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
+echo "$(pwd)"
+ls "$(pwd)"
+
+cd "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
 
 source ../../../scripts/build-helpers
 
@@ -116,6 +119,8 @@ echo " Step 11"
 	echo $PATH
 
 	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
+
+ls  "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
 
 [ -d "$OSGEO4W_ROOT_MSYS" ] | echo "OSGEO4W_ROOT_MSYS (${OSGEO4W_ROOT_MSYS}) exists"
 [ -d "$OSGEO4W_ROOT" ] | echo "OSGEO4W_ROOT (${OSGEO4W_ROOT}) exists"
