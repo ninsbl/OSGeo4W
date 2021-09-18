@@ -6,14 +6,7 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 export OSGEO4W_REP="/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
 export OSGEO4W_ROOT_MSYS="$OSGEO4W_REP"
-export OSGEO4W_ROOT="$OSGEO4W_REP" # $(cygpath -w "$OSGEO4W_ROOT_MSYS")
-
-ls "$OSGEO4W_REP" 2> /dev/null
-ls "$OSGEO4W_ROOT" 2> /dev/null
-ls "$OSGEO4W_ROOT_MSYS" 2> /dev/null
-ls "$OSGEO4W_ROOT/mingw64" 2> /dev/null
-ls "$OSGEO4W_ROOT/OSGeo4W" 2> /dev/null
-ls "$OSGEO4W_ROOT_MSYS/OSGeo4W" 2> /dev/null
+export OSGEO4W_ROOT=$(cygpath -mw "$OSGEO4W_ROOT_MSYS")
 
 branch=previewbranch_8_0
 
@@ -116,12 +109,17 @@ echo " Step 9"
 echo " Step 10"
 
 	cd ../$P-$V
-	ls ./
 
 echo " Step 11"
 
 	echo $PATH
-	ls mswindows/osgeo4w
+ls ../
+ls "$OSGEO4W_REP" 2> /dev/null
+ls "$OSGEO4W_ROOT" 2> /dev/null
+ls "$OSGEO4W_ROOT_MSYS" 2> /dev/null
+ls "$OSGEO4W_ROOT/mingw64" 2> /dev/null
+ls "$OSGEO4W_ROOT/OSGeo4W" 2> /dev/null
+ls "$OSGEO4W_ROOT_MSYS/OSGeo4W" 2> /dev/null
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash)"
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
