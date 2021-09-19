@@ -6,7 +6,9 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 branch=main
 
+
 if [ "$CI" ] ; then
+cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w
 OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
