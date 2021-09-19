@@ -80,6 +80,10 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	cd ../$P-$V
 	ls ./
 
+	[ "$CI" ] | export PATH="${PATH}:$(cygpath -au C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.25.28610/bin/HostX86/x86)"
+
+	echo $PATH
+
 	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
