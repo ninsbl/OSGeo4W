@@ -16,7 +16,7 @@ echo "OSGEO4W_PWD: $OSGEO4W_PWD"
 
 echo "$(pwd)"
 
-if [ "$CI" ] | cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
+[ "$CI" ] | cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 
 echo "$(pwd)"
 
