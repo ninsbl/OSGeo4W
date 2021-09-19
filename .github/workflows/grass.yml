@@ -31,8 +31,8 @@ jobs:
       - name: Copy dumpbin
         run: Copy-Item -Path "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/dumpbin.exe" -Destination "C:/Windows/" -Recurse
       - name: Goto package dir
-        run: cd src/grass-dev/osgeo4w
-      - name: Build GRASS GIS
-        run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
+        run: |
+          cd src/grass-dev/osgeo4w
+          C:\msys64\usr\bin\bash.exe -l ./package.sh
       - name: Test executing of the grass command
         run: D:/a/OSGeo4W/OSGeo4W/.github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/opt/grass/grass80.bat'
