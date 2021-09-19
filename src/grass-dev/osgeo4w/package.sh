@@ -6,6 +6,14 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 branch=main
 
+echo "$(pwd)"
+ls "$(pwd)"
+echo "CI: $CI"
+echo "OSGEO4W_REP: $OSGEO4W_REP"
+echo "OSGEO4W_ROOT: $OSGEO4W_ROOT"
+echo "OSGEO4W_ROOT_MSYS: $OSGEO4W_ROOT_MSYS"
+echo "OSGEO4W_PWD: $OSGEO4W_PWD"
+
 [ "$CI" ] | cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 
 source ../../../build-helpers
@@ -85,6 +93,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	echo $PATH
 
 	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
+	cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
 
