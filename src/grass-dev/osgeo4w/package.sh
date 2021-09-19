@@ -18,6 +18,7 @@ echo "$(pwd)"
 
 if [ "$CI" ] ; then
 cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
+DUMPBIN=$(cygpath -asu "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.25.28610/bin/HostX86/x86")
 fi
 
 echo "$(pwd)"
@@ -98,9 +99,9 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 
 	echo "$OSGEO4W_PWD"
 	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
-	cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash
+	cygpath -aw "$OSGEO4W_PWD/msys64/usr/bin/bash"
 
-	[ "$CI" ] | export PATH="${PATH}:$(cygpath -asu \"C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.25.28610/bin/HostX86/x86\")"
+	[ "$CI" ] | export PATH="${PATH}:$DUMPBIN"
 	echo $PATH
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
