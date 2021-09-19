@@ -94,6 +94,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	cd ../$P-$V
 	ls ./
 
+	echo "$OSGEO4W_PWD"
 	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 	cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash
 
