@@ -6,27 +6,10 @@ export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel
 
 branch=main
 
-echo "$(pwd)"
-ls "$(pwd)"
-echo "CI: $CI"
-echo "OSGEO4W_REP: $OSGEO4W_REP"
-echo "OSGEO4W_ROOT: $OSGEO4W_ROOT"
-echo "OSGEO4W_ROOT_MSYS: $OSGEO4W_ROOT_MSYS"
-echo "OSGEO4W_PWD: $OSGEO4W_PWD"
-
-echo "$(pwd)"
-
 if [ "$CI" ] ; then
-cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
-DUMPBIN=$(cygpath -asu "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.25.28610/bin/HostX86/x86")
 OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w
 OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
-
-echo $DUMPBIN
-echo $OSGEO4W_ROOT_MSYS
-echo $OSGEO4W_ROOT
-
 
 source ../../../scripts/build-helpers
 
@@ -97,17 +80,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
 
-	ls ./
-	echo ../$P-$V
 	cd ../$P-$V
-	ls ./
-
-	echo "$OSGEO4W_PWD"
-	echo "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
-	cygpath -aw "$OSGEO4W_PWD/msys64/usr/bin/bash"
-
-	[ "$CI" ] | export PATH="${PATH}:$DUMPBIN"
-	echo $PATH
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
