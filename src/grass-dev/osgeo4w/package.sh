@@ -19,9 +19,14 @@ echo "$(pwd)"
 if [ "$CI" ] ; then
 cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 DUMPBIN=$(cygpath -asu "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.25.28610/bin/HostX86/x86")
+OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w
+OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
 
-echo "$(pwd)"
+echo $DUMPBIN
+echo $OSGEO4W_ROOT_MSYS
+echo $OSGEO4W_ROOT
+
 
 source ../../../scripts/build-helpers
 
