@@ -89,7 +89,9 @@ if [ "$CI" ] ; then
 	P=$(cygpath -ua "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/")
 	sed -i "3 a export PATH=\"$P:$PATH\"" mswindows/osgeo4w/mklibs.sh
 	sed -i "s/dumpbin -exports/dumpbin \/EXPORTS/" mswindows/osgeo4w/mklibs.sh
-	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/mklibs.sh
+	sed -i '/\/bin\/tar/i echo "$PDIR/grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/package.sh
+	sed -i '/\/bin\/tar/i ls "$PDIR"'  mswindows/osgeo4w/package.sh
+	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/package.sh
 	cat mswindows/osgeo4w/mklibs.sh
 fi
 
