@@ -29,8 +29,6 @@ jobs:
       - name: Set env
         run: |
           echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
-      - name: Copy dumpbin
-        run: Copy-Item -Path "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/dumpbin.exe" -Destination "C:/Windows/" -Recurse
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
