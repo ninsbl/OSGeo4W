@@ -251,7 +251,7 @@ index c49d57974..5e7e8c3fc 100755
 -# see #3047
 -#	        --with-mysql
 +		--with-netcdf=${OSGEO4W_ROOT_MSYS}/bin/nc-config \
-+		--with-pdal=${OSGEO4W_ROOT_MSYS}/bin/pdal-config \
++#		--with-pdal=${OSGEO4W_ROOT_MSYS}/bin/pdal-config \
 +		--with-blas \
 +		--with-openmp \
 +		--with-wxwidgets \
