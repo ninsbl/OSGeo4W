@@ -244,7 +244,7 @@ diff -ur grass-dev-8.0.0alpha/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0alp
 +		--with-regex \
 +		--with-blas \
 +		--with-openmp \
-+		--with-wxwidgets \
++#		--with-wxwidgets \
  	        --with-opengl=windows \
 -                --with-bzlib $conf_opts-# see #3047
 -#	        --with-mysql
