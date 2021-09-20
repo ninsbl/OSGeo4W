@@ -241,7 +241,7 @@ diff -ur grass-dev-8.0.0alpha/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0alp
 +		--with-netcdf=${OSGEO4W_ROOT_MSYS}/bin/nc-config \
 +		--with-pdal=${OSGEO4W_ROOT_MSYS}/bin/pdal-config \
 +		--with-blas \
-+		--with-regex \
++#		--with-regex \
 +		--with-blas \
 +		--with-openmp \
 +#		--with-wxwidgets \
