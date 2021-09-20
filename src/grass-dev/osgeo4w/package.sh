@@ -1,5 +1,6 @@
 export P=grass-dev
-export V=8.0.0alpha
+export PACKAGE_POSTFIX="-dev"
+export V=8.0.0
 export B=next
 export MAINTAINER=JuergenFischer
 export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel libpq-devel libtiff-devel sqlite3-devel zstd-devel python3-core python3-six python3-pywin32 liblas-devel python3-wxpython"
@@ -88,7 +89,8 @@ if [ "$CI" ] ; then
 	P=$(cygpath -ua "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/")
 	sed -i "3 a export PATH=\"$P:$PATH\"" mswindows/osgeo4w/mklibs.sh
 	sed -i "s/dumpbin -exports/dumpbin \/EXPORTS/" mswindows/osgeo4w/mklibs.sh
-	cat mswindows/osgeo4w/mklibs.sh
+	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/mklibs.sh
+	cat -i mswindows/osgeo4w/mklibs.sh
 fi
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
