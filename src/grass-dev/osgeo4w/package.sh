@@ -79,6 +79,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 		mingw-w64-x86_64-libpng \
 		mingw-w64-x86_64-pcre \
 		mingw-w64-x86_64-fftw \
+		mingw-w64-x86_64-lapack \
 		mingw-w64-x86_64-cairo
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
