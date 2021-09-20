@@ -250,7 +250,7 @@ diff -ur grass-dev-8.0.0alpha/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0alp
  
  	touch mswindows/osgeo4w/configure-stamp
  fi
-@@ -248,8 +223,7 @@
+@@ -248,8 +222,7 @@
  
  if [ -n "$PACKAGE_PATCH" ]; then
      log building vc libraries
