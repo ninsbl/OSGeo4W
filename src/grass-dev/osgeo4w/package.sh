@@ -90,7 +90,7 @@ if [ "$CI" ] ; then
 	sed -i "3 a export PATH=\"$P:$PATH\"" mswindows/osgeo4w/mklibs.sh
 	sed -i "s/dumpbin -exports/dumpbin \/EXPORTS/" mswindows/osgeo4w/mklibs.sh
 	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/mklibs.sh
-	cat -i mswindows/osgeo4w/mklibs.sh
+	cat mswindows/osgeo4w/mklibs.sh
 fi
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
