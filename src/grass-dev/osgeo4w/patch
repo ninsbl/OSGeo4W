@@ -232,7 +232,7 @@ diff -ur grass-dev-8.0.0alpha/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0alp
  		--with-postgres \
  		--with-postgres-includes=$OSGEO4W_ROOT_MSYS/include \
  		--with-postgres-libs=$PWD/mswindows/osgeo4w/lib \
-@@ -211,10 +179,11 @@
+@@ -211,10 +179,16 @@
 		--with-zstd \
  		--with-odbc \
  	        --with-cairo \
@@ -241,15 +241,12 @@ diff -ur grass-dev-8.0.0alpha/mswindows/osgeo4w/package.sh ../grass-dev-8.0.0alp
 +		--with-netcdf=${OSGEO4W_ROOT_MSYS}/bin/nc-config \
 +		--with-pdal=${OSGEO4W_ROOT_MSYS}/bin/pdal-config \
 +		--with-blas \
-+#		--with-regex \
-+		--with-blas \
 +		--with-openmp \
-+#		--with-wxwidgets \
++		--with-wxwidgets \
  	        --with-opengl=windows \
 -                --with-bzlib $conf_opts-# see #3047
 -#	        --with-mysql
 +		--with-bzlib \
-+		--with-liblas=$PWD/mswindows/osgeo4w/liblas-config
  
  	touch mswindows/osgeo4w/configure-stamp
  fi
