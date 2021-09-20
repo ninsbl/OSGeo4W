@@ -93,7 +93,6 @@ if [ "$CI" ] ; then
 	sed -i '/\/bin\/tar/i ls "$PDIR"'  mswindows/osgeo4w/package.sh
 	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/package.sh
 	cat mswindows/osgeo4w/mklibs.sh
-	export CXX=cl
 fi
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
