@@ -13,6 +13,7 @@ jobs:
       OSGEO4W_REP: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
       OSGEO4W_ROOT_MSYS: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w"
       OSGEO4W_PWD: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+      OSGEO4W_SKIP_UPLOAD: "1"
       CI: "1"
     strategy:
       matrix:
