@@ -30,14 +30,14 @@ jobs:
       - name: Set env
         run: |
           echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
-    # WDF kills MSVC batch's own detection of SDKs…
-    - name: Clean WDF
-      shell: cmd
-      run: |
-        rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\lib\wdf"
-        rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\include\wdf"
-        rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\redist\wdf"
-        rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\Tools"
+      # WDF kills MSVC batch's own detection of SDKs…
+      - name: Clean WDF
+        shell: cmd
+        run: |
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\lib\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\include\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\redist\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\Tools"
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
