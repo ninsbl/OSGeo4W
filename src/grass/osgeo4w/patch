@@ -282,6 +282,13 @@ diff -ur grass-7.8.6RC1/mswindows/osgeo4w/package.sh ../grass-7.8.6RC1/mswindows
  	        --with-cairo \
 +		--with-cairo-includes=$OSGEO4W_ROOT_MSYS/include \
 +		--with-cairo-ldflags="-L$PWD/mswindows/osgeo4w/lib -lcairo -lfontconfig" \
++		--with-netcdf=${OSGEO4W_ROOT_MSYS}/bin/nc-config \
++		--with-pdal=${OSGEO4W_ROOT_MSYS}/bin/pdal-config \
++		--with-blas \
++		--with-regex \
++		--with-blas \
++		--with-openmp \
++#		--with-wxwidgets \
  	        --with-opengl=windows \
 -                --with-bzlib $conf_opts
 -# see #3047
