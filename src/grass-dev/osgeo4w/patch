@@ -285,11 +285,11 @@ index c49d57974..f383bb864 100755
 -    cp -uv /mingw${MINGW_POSTFIX}/etc/fonts/fonts.conf \
 -	apps/grass/grass$POSTFIX/etc
 +    if [ -f "$blas_dll" ] ; then echo "Copying libblas.dll"; fi
-+    [ -f "$blas_dll" ] ; then cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin/ ; fi
++    if [ -f "$blas_dll" ] ; then cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin/ ; fi
 +	
-+    [ -f "$lapack_dll" ] ; then echo "Copying liblapack.dll"; fi
-+    [ -f "$lapack_dll" ] ; then cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin/ ; fi
-+    [ -f "$lapack_gcc" ] ; then cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin/ ; fi
++    if [ -f "$lapack_dll" ] ; then echo "Copying liblapack.dll"; fi
++    if [ -f "$lapack_dll" ] ; then cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin/ ; fi
++    if [ -f "$lapack_gcc" ] ; then cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin/ ; fi
 +    cp -uv /mingw64/etc/fonts/fonts.conf apps/grass/grass$POSTFIX/etc
  
      # creating grass package
