@@ -7,7 +7,6 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 
 branch=releasebranch_7_8
 
-
 if [ "$CI" ] ; then
 cd /d/a/OSGeo4W/OSGeo4W/src/grass-rel-dev/osgeo4w
 OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-rel-dev/osgeo4w/osgeo4w
@@ -15,8 +14,6 @@ OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
 
 source ../../../scripts/build-helpers
-
-echo "$(pwd)"
 
 set -o | grep -s "xtrace[	 ]*on" && xtrace=-x || true
 
@@ -90,10 +87,6 @@ if [ "$CI" ] ; then
 	P=$(cygpath -ua "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/")
 	sed -i "3 a export PATH=\"$P:$PATH\"" mswindows/osgeo4w/mklibs.sh
 	sed -i "s/dumpbin -exports/dumpbin \/EXPORTS/" mswindows/osgeo4w/mklibs.sh
-	sed -i '/\/bin\/tar/i echo "$PDIR/grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/package.sh
-	sed -i '/\/bin\/tar/i ls "$PDIR"'  mswindows/osgeo4w/package.sh
-	sed -i '/\/bin\/tar/i echo "grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2"'  mswindows/osgeo4w/package.sh
-	cat mswindows/osgeo4w/mklibs.sh
 fi
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
@@ -109,7 +102,7 @@ cat <<EOF >$R/setup.hint
 sdesc: "GRASS GIS 7.8.dev"
 ldesc: "Geographic Resources Analysis Support System (GRASS GIS) 7.8.dev"
 category: Desktop
-requires: liblas $RUNTIMEDEPENDS avce00 gpsbabel gs python3-gdal python3-matplotlib libtiff python3-wxpython python3-pillow python3-pip python3-ply python3-pyopengl python3-psycopg2-binary python3-six zstd python3-pywin32
+requires: liblas $RUNTIMEDEPENDS avce00 gpsbabel gs python3-gdal python3-matplotlib libtiff python3-wxpython python3-pillow python3-pip python3-ply python3-pyopengl python3-psycopg2-binary python3-six zstd python3-pywin32 netcdf wxwidgets
 maintainer: $MAINTAINER
 EOF
 
