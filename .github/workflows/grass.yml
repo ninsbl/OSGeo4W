@@ -1,4 +1,4 @@
-name: GRASS_8_0_preview
+name: GRASS_7_8_release
 
 on:
   - push
@@ -10,9 +10,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     env:
-      OSGEO4W_REP: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
-      OSGEO4W_ROOT_MSYS: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w"
-      OSGEO4W_PWD: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+      OSGEO4W_REP: "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w"
+      OSGEO4W_ROOT_MSYS: "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w"
+      OSGEO4W_PWD: "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w"
       OSGEO4W_SKIP_UPLOAD: "1"
       CI: "1"
     strategy:
@@ -30,6 +30,10 @@ jobs:
       - name: Set env
         run: |
           echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
+      - name: check env
+        run: |
+          echo "${{ env.OSGEO4W_ROOT }})"
+          echo "$GITHUB_ENV"
       # WDF kills MSVC batch's own detection of SDKs…
       - name: Clean WDF
         shell: cmd
@@ -40,6 +44,6 @@ jobs:
           rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\Tools"
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
-        working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
+        working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
       - name: Test executing of the grass command
-        run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin/grass80.bat'
+        run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
