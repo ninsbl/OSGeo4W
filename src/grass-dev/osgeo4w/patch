@@ -277,19 +277,19 @@ index c49d57974..f383bb864 100755
      unix2dos etc/postinstall/grass${PACKAGE_POSTFIX}.bat
      unix2dos etc/preremove/grass${PACKAGE_POSTFIX}.bat
  
-+    blas_dll=../mingw64/bin/libblas.dll
-+    lapack_dll=../mingw64/bin/liblapack.dll
-+    lapack_gcc=../mingw64/bin/libgcc_s_dw2-1.dll
++    blas_dll=../msys64/mingw64/bin/libblas.dll
++    lapack_dll=../msys64/mingw64/bin/liblapack.dll
++    lapack_gcc=../msys64/mingw64/bin/libgcc_s_dw2-1.dll
      # copy dependencies (TODO: to be reduced)
      cp -uv $DLLS apps/grass/grass$POSTFIX/bin
 -    cp -uv /mingw${MINGW_POSTFIX}/etc/fonts/fonts.conf \
 -	apps/grass/grass$POSTFIX/etc
-+    [ -f "$blas_dll" ] | echo "Copying libblas.dll"
-+    [ -f "$blas_dll" ] | cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin
++    if [ -f "$blas_dll" ] ; then echo "Copying libblas.dll"; fi
++    [ -f "$blas_dll" ] ; then cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin/ ; fi
 +	
-+    [ -f "$lapack_dll" ] | echo "Copying liblapack.dll"
-+    [ -f "$lapack_dll" ] | cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin
-+    [ -f "$lapack_gcc" ] | cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin
++    [ -f "$lapack_dll" ] ; then echo "Copying liblapack.dll"; fi
++    [ -f "$lapack_dll" ] ; then cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin/ ; fi
++    [ -f "$lapack_gcc" ] ; then cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin/ ; fi
 +    cp -uv /mingw64/etc/fonts/fonts.conf apps/grass/grass$POSTFIX/etc
  
      # creating grass package
