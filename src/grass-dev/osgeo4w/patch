@@ -17,6 +17,19 @@ index 8f4a4c798..f75a74d7c 100644
      
      /* Make sure location and mapset are set */
      G_location_path();
+diff --git a/mswindows/osgeo4w/env.bat.tmpl b/mswindows/osgeo4w/env.bat.tmpl
+index 157d622b3..200c86f26 100644
+--- a/mswindows/osgeo4w/env.bat.tmpl
++++ b/mswindows/osgeo4w/env.bat.tmpl
+@@ -2,8 +2,6 @@ REM
+ REM Environmental variables for GRASS OSGeo4W installer
+ REM
+ 
+-call "%OSGEO4W_ROOT%\bin\py3_env.bat"
+-
+ set GISBASE=%OSGEO4W_ROOT%\apps\grass\grass@POSTFIX@
+ 
+ REM Uncomment if you want to use Bash instead of Cmd
 diff --git a/mswindows/osgeo4w/mklibs.sh b/mswindows/osgeo4w/mklibs.sh
 index 00a597afa..b7aaa57ee 100755
 --- a/mswindows/osgeo4w/mklibs.sh
@@ -67,7 +80,7 @@ index 00a597afa..b7aaa57ee 100755
  done
 +
 diff --git a/mswindows/osgeo4w/package.sh b/mswindows/osgeo4w/package.sh
-index c49d57974..f383bb864 100755
+index c49d57974..342288a92 100755
 --- a/mswindows/osgeo4w/package.sh
 +++ b/mswindows/osgeo4w/package.sh
 @@ -1,7 +1,5 @@
@@ -118,9 +131,9 @@ index c49d57974..f383bb864 100755
 -
  fetchenv $OSGEO4W_ROOT_MSYS/bin/o4w_env.bat
 -fetchenv $OSGEO4W_ROOT_MSYS/bin/py3_env.bat
- 
--! [ -f $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat.off ] || mv $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat.off $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat
 -
+-! [ -f $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat.off ] || mv $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat.off $OSGEO4W_ROOT_MSYS/etc/ini/msys.bat
+ 
 -PATH=/mingw${MINGW_POSTFIX}/lib/ccache/bin:$PATH
 +PATH=/mingw64/lib/ccache/bin:$PATH
  
@@ -273,7 +286,7 @@ index c49d57974..f383bb864 100755
      mv mswindows/osgeo4w/vc/grass*.lib $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/lib
  
      log creating package
-@@ -265,10 +236,18 @@ if [ -n "$PACKAGE_PATCH" ]; then
+@@ -265,19 +236,26 @@ if [ -n "$PACKAGE_PATCH" ]; then
      unix2dos etc/postinstall/grass${PACKAGE_POSTFIX}.bat
      unix2dos etc/preremove/grass${PACKAGE_POSTFIX}.bat
  
@@ -286,7 +299,7 @@ index c49d57974..f383bb864 100755
 -	apps/grass/grass$POSTFIX/etc
 +    if [ -f "$blas_dll" ] ; then echo "Copying libblas.dll"; fi
 +    if [ -f "$blas_dll" ] ; then cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin/ ; fi
-+	
++
 +    if [ -f "$lapack_dll" ] ; then echo "Copying liblapack.dll"; fi
 +    if [ -f "$lapack_dll" ] ; then cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin/ ; fi
 +    if [ -f "$lapack_gcc" ] ; then cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin/ ; fi
@@ -294,11 +307,17 @@ index c49d57974..f383bb864 100755
  
      # creating grass package
      /bin/tar -cjf $PDIR/grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2 \
-@@ -277,7 +256,6 @@ if [ -n "$PACKAGE_PATCH" ]; then
- 	bin/python-${GRASS_EXECUTABLE}.bat \
- 	etc/postinstall/grass${PACKAGE_POSTFIX}.bat \
- 	etc/preremove/grass${PACKAGE_POSTFIX}.bat
+-	apps/grass/grass$POSTFIX \
+-	bin/${GRASS_EXECUTABLE}.bat \
+-	bin/python-${GRASS_EXECUTABLE}.bat \
+-	etc/postinstall/grass${PACKAGE_POSTFIX}.bat \
+-	etc/preremove/grass${PACKAGE_POSTFIX}.bat
 -
++    apps/grass/grass$POSTFIX \
++    bin/${GRASS_EXECUTABLE}.bat \
++    bin/python-${GRASS_EXECUTABLE}.bat \
++    etc/postinstall/grass${PACKAGE_POSTFIX}.bat \
++    etc/preremove/grass${PACKAGE_POSTFIX}.bat
  fi
  
  log
