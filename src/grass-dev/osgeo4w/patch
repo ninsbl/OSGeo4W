@@ -67,7 +67,7 @@ index 00a597afa..b7aaa57ee 100755
  done
 +
 diff --git a/mswindows/osgeo4w/package.sh b/mswindows/osgeo4w/package.sh
-index c49d57974..cfd5d7a03 100755
+index c49d57974..f383bb864 100755
 --- a/mswindows/osgeo4w/package.sh
 +++ b/mswindows/osgeo4w/package.sh
 @@ -1,7 +1,5 @@
@@ -238,7 +238,7 @@ index c49d57974..cfd5d7a03 100755
  		--with-postgres \
  		--with-postgres-includes=$OSGEO4W_ROOT_MSYS/include \
  		--with-postgres-libs=$PWD/mswindows/osgeo4w/lib \
-@@ -206,15 +175,17 @@ if ! [ -f mswindows/osgeo4w/configure-stamp ]; then
+@@ -206,15 +175,18 @@ if ! [ -f mswindows/osgeo4w/configure-stamp ]; then
  		--with-sqlite \
  		--with-sqlite-includes=$OSGEO4W_ROOT_MSYS/include \
  		--with-sqlite-libs=$PWD/mswindows/osgeo4w/lib \
@@ -253,6 +253,7 @@ index c49d57974..cfd5d7a03 100755
 -#	        --with-mysql
 +		--with-netcdf=${OSGEO4W_ROOT_MSYS}/bin/nc-config \
 +		--with-blas \
++		--with-lapack-includes=/mingw64/include/lapack \
 +		--with-openmp \
 +		--with-wxwidgets \
 +	    --with-cairo \
@@ -262,7 +263,7 @@ index c49d57974..cfd5d7a03 100755
  
  	touch mswindows/osgeo4w/configure-stamp
  fi
-@@ -248,8 +219,7 @@ sed -e "s#@POSTFIX@#$POSTFIX#g" -e "s#@VERSION@#$VERSION#g" -e "s#@GRASS_EXECUTA
+@@ -248,8 +220,7 @@ sed -e "s#@POSTFIX@#$POSTFIX#g" -e "s#@VERSION@#$VERSION#g" -e "s#@GRASS_EXECUTA
  
  if [ -n "$PACKAGE_PATCH" ]; then
      log building vc libraries
@@ -272,17 +273,28 @@ index c49d57974..cfd5d7a03 100755
      mv mswindows/osgeo4w/vc/grass*.lib $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/lib
  
      log creating package
-@@ -267,8 +237,7 @@ if [ -n "$PACKAGE_PATCH" ]; then
+@@ -265,10 +236,18 @@ if [ -n "$PACKAGE_PATCH" ]; then
+     unix2dos etc/postinstall/grass${PACKAGE_POSTFIX}.bat
+     unix2dos etc/preremove/grass${PACKAGE_POSTFIX}.bat
  
++    blas_dll=../mingw64/bin/libblas.dll
++    lapack_dll=../mingw64/bin/liblapack.dll
++    lapack_gcc=../mingw64/bin/libgcc_s_dw2-1.dll
      # copy dependencies (TODO: to be reduced)
      cp -uv $DLLS apps/grass/grass$POSTFIX/bin
 -    cp -uv /mingw${MINGW_POSTFIX}/etc/fonts/fonts.conf \
 -	apps/grass/grass$POSTFIX/etc
++    [ -f "$blas_dll" ] | echo "Copying libblas.dll"
++    [ -f "$blas_dll" ] | cp -uv "$blas_dll" apps/grass/grass$POSTFIX/bin
++	
++    [ -f "$lapack_dll" ] | echo "Copying liblapack.dll"
++    [ -f "$lapack_dll" ] | cp -uv "$lapack_dll" apps/grass/grass$POSTFIX/bin
++    [ -f "$lapack_gcc" ] | cp -uv "$lapack_gcc" apps/grass/grass$POSTFIX/bin
 +    cp -uv /mingw64/etc/fonts/fonts.conf apps/grass/grass$POSTFIX/etc
  
      # creating grass package
      /bin/tar -cjf $PDIR/grass$PACKAGE_POSTFIX-$VERSION-$PACKAGE_PATCH.tar.bz2 \
-@@ -277,7 +246,6 @@ if [ -n "$PACKAGE_PATCH" ]; then
+@@ -277,7 +256,6 @@ if [ -n "$PACKAGE_PATCH" ]; then
  	bin/python-${GRASS_EXECUTABLE}.bat \
  	etc/postinstall/grass${PACKAGE_POSTFIX}.bat \
  	etc/preremove/grass${PACKAGE_POSTFIX}.bat
