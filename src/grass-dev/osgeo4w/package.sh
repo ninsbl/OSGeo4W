@@ -7,7 +7,6 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 
 branch=main
 
-
 if [ "$CI" ] ; then
 cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
 OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w
@@ -15,8 +14,6 @@ OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
 
 source ../../../scripts/build-helpers
-
-echo "$(pwd)"
 
 set -o | grep -s "xtrace[	 ]*on" && xtrace=-x || true
 
@@ -112,7 +109,11 @@ ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc
 cat /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/env.bat
 echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python"
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python
+ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python/grass
 
+#####
+cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass80/etc/grass.py
+#####
 
 cp ../$P-$V/mswindows/osgeo4w/package/$P-$V-1.tar.bz2 $R/$P-$V-$B.tar.bz2
 cp ../$P-$V/COPYING $R/$P-$V-$B.txt
