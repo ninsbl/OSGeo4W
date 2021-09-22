@@ -33,7 +33,6 @@ jobs:
       - name: check env
         run: |
           echo "${{ env.OSGEO4W_ROOT }}"
-          echo "${{ GITHUB_ENV }}"
       # WDF kills MSVC batch's own detection of SDKs…
       - name: Clean WDF
         shell: cmd
