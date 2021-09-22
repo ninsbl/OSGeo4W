@@ -44,7 +44,7 @@ jobs:
           rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\Tools"
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
-        working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
+        working-directory: 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w'
       -name: List
         run: |
           dir 'D:/a/OSGeo4W/OSGeo4W/src/GRASS-~1/osgeo4w/osgeo4w/apps'
