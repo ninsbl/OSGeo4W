@@ -32,8 +32,8 @@ jobs:
           echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
       - name: check env
         run: |
-          echo "${{ env.OSGEO4W_ROOT }})"
-          echo "$GITHUB_ENV"
+          echo "${{ env.OSGEO4W_ROOT }}"
+          echo "${{ GITHUB_ENV }}"
       # WDF kills MSVC batch's own detection of SDKs…
       - name: Clean WDF
         shell: cmd
@@ -47,9 +47,9 @@ jobs:
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
       -name: List
         run: |
-          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\"
-          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\"
-          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\grass80\"
-          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\grass80\etc\"
+          dir 'D:/a/OSGeo4W/OSGeo4W/src/GRASS-~1/osgeo4w/osgeo4w/apps'
+          dir 'D:/a/OSGeo4W/OSGeo4W/src/GRASS-~1/osgeo4w/osgeo4w/apps\grass'
+          dir 'D:/a/OSGeo4W/OSGeo4W/src/GRASS-~1/osgeo4w/osgeo4w/apps\grass\grass80'
+          dir 'D:/a/OSGeo4W/OSGeo4W/src/GRASS-~1/osgeo4w/osgeo4w/apps\grass\grass80\etc'
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
