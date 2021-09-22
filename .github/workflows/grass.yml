@@ -45,5 +45,11 @@ jobs:
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
+      -name: List
+        run: |
+          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\"
+          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\"
+          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\grass80\"
+          dir "D:\a\OSGeo4W\OSGeo4W\src\GRASS-~1\osgeo4w\osgeo4w\apps\grass\grass80\etc\"
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
