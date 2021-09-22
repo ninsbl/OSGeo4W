@@ -92,6 +92,10 @@ fi
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
 
+#####
+cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/grass78.py
+#####
+
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
