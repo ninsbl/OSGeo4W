@@ -98,11 +98,16 @@ fi
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
+echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin"
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin
+echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps"
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps\grass
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps\grass\grass78
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps\grass\grass78\etc
+echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass"
+ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass
+echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80"
+ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80
+echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc"
+ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc
 
 
 cp ../$P-$V/mswindows/osgeo4w/package/$P-$V-1.tar.bz2 $R/$P-$V-$B.tar.bz2
