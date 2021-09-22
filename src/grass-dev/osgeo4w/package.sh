@@ -95,6 +95,7 @@ fi
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
+#####
 echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin"
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin
 cat /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin/python-grass80.bat
@@ -111,7 +112,6 @@ echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python
 ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python/grass
 
-#####
 cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass80/etc/grass.py
 #####
 
