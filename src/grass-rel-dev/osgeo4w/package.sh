@@ -95,6 +95,7 @@ fi
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
+ls ../$P-$V/mswindows/osgeo4w/package
 cp ../$P-$V/mswindows/osgeo4w/package/$P-$V-1.tar.bz2 $R/$P-$V-$B.tar.bz2
 cp ../$P-$V/COPYING $R/$P-$V-$B.txt
 
