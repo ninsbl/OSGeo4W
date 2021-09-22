@@ -399,3 +399,16 @@ index 9fdca092d..e0f28a8e0 100644
      def load(self, path):
          return _WindowsLibrary(path)
  
+diff --git a/mswindows/osgeo4w/grass.bat.tmpl b/mswindows/osgeo4w/grass.bat.tmpl
+index 592704204..70f1fe860 100644
+--- a/mswindows/osgeo4w/grass.bat.tmpl
++++ b/mswindows/osgeo4w/grass.bat.tmpl
+@@ -15,7 +15,7 @@ call "%OSGEO4W_ROOT%\apps\grass\grass@POSTFIX@\etc\env.bat"
+ rem
+ rem Launch GRASS GIS
+ rem
+-"%GRASS_PYTHON%" "%GISBASE%\etc\grass@POSTFIX@.py" %*
++"%GRASS_PYTHON%" "%GISBASE%\etc\grass.py" %*
+ 
+ rem
+ rem Pause on error
