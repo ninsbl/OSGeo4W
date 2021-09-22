@@ -8,8 +8,8 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 
 
 if [ "$CI" ] ; then
-cd /d/a/OSGeo4W/OSGeo4W/src/grass-rel-dev/osgeo4w
-OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-rel-dev/osgeo4w/osgeo4w
+cd /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
+OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w
 OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
 fi
 
