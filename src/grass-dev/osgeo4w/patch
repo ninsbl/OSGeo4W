@@ -87,7 +87,7 @@ index 00a597afa..b7aaa57ee 100755
  done
 +
 diff --git a/mswindows/osgeo4w/package.sh b/mswindows/osgeo4w/package.sh
-index c49d57974..342288a92 100755
+index c49d57974..fc6cf6f23 100755
 --- a/mswindows/osgeo4w/package.sh
 +++ b/mswindows/osgeo4w/package.sh
 @@ -1,7 +1,5 @@
@@ -283,7 +283,16 @@ index c49d57974..342288a92 100755
  
  	touch mswindows/osgeo4w/configure-stamp
  fi
-@@ -248,8 +220,7 @@ sed -e "s#@POSTFIX@#$POSTFIX#g" -e "s#@VERSION@#$VERSION#g" -e "s#@GRASS_EXECUTA
+@@ -234,6 +206,8 @@ mv $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/include/grass/config.h \
+    $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/include/grass/config.h.mingw
+ cp mswindows/osgeo4w/config.h.switch $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/include/grass/config.h
+ cp mswindows/osgeo4w/config.h.vc $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/include/grass
++mv $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/etc/grass.py $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/etc/grass${POSTFIX}.py
++
+ mkdir -p $OSGEO4W_ROOT_MSYS/etc/preremove $OSGEO4W_ROOT_MSYS/etc/postinstall
+ sed -e "s#@POSTFIX@#$POSTFIX#g" \
+     mswindows/osgeo4w/grass.bat.tmpl >$OSGEO4W_ROOT_MSYS/bin/${GRASS_EXECUTABLE}.bat
+@@ -248,8 +222,7 @@ sed -e "s#@POSTFIX@#$POSTFIX#g" -e "s#@VERSION@#$VERSION#g" -e "s#@GRASS_EXECUTA
  
  if [ -n "$PACKAGE_PATCH" ]; then
      log building vc libraries
@@ -293,7 +302,7 @@ index c49d57974..342288a92 100755
      mv mswindows/osgeo4w/vc/grass*.lib $OSGEO4W_ROOT_MSYS/apps/grass/grass$POSTFIX/lib
  
      log creating package
-@@ -265,19 +236,26 @@ if [ -n "$PACKAGE_PATCH" ]; then
+@@ -265,19 +238,26 @@ if [ -n "$PACKAGE_PATCH" ]; then
      unix2dos etc/postinstall/grass${PACKAGE_POSTFIX}.bat
      unix2dos etc/preremove/grass${PACKAGE_POSTFIX}.bat
  
@@ -406,16 +415,3 @@ index 9fdca092d..e0f28a8e0 100644
      def load(self, path):
          return _WindowsLibrary(path)
  
-diff --git a/mswindows/osgeo4w/grass.bat.tmpl b/mswindows/osgeo4w/grass.bat.tmpl
-index 592704204..70f1fe860 100644
---- a/mswindows/osgeo4w/grass.bat.tmpl
-+++ b/mswindows/osgeo4w/grass.bat.tmpl
-@@ -15,7 +15,7 @@ call "%OSGEO4W_ROOT%\apps\grass\grass@POSTFIX@\etc\env.bat"
- rem
- rem Launch GRASS GIS
- rem
--"%GRASS_PYTHON%" "%GISBASE%\etc\grass@POSTFIX@.py" %*
-+"%GRASS_PYTHON%" "%GISBASE%\etc\grass.py" %*
- 
- rem
- rem Pause on error
