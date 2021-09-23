@@ -28,6 +28,7 @@ jobs:
           git config --global core.eol lf
       - uses: actions/checkout@v2
       - name: Set env
+        shell: bash
         run: |
           echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
       - name: check env
@@ -46,5 +47,7 @@ jobs:
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
+      - name: Install extension
+        run: .github/workflows/get_extension.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
       - name: Run tests
         run: .github/workflows/test_thorough.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/grass78.bat'
