@@ -95,26 +95,6 @@ fi
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
-#####
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin
-cat /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin/python-grass80.bat
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc
-cat /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/env.bat
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python
-ls /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/apps/grass/grass80/etc/python/grass
-
-cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass80/etc/grass.py
-#####
-
 cp ../$P-$V/mswindows/osgeo4w/package/$P-$V-1.tar.bz2 $R/$P-$V-$B.tar.bz2
 cp ../$P-$V/COPYING $R/$P-$V-$B.txt
 
