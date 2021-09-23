@@ -92,27 +92,6 @@ fi
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
 
-#####
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin
-cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/bin/python-grass78.bat
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc
-cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/env.bat
-echo "/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/python"
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/python
-ls /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/python/grass
-
-cat /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w/apps/grass/grass78/etc/grass.py
-#####
-
-
 export R=$OSGEO4W_REP/x86_64/release/$P
 mkdir -p $R
 
