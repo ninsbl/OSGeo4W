@@ -43,3 +43,5 @@ jobs:
         working-directory: D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin/grass80.bat'
+      - name: Run tests
+        run: .github/workflows/test_thorough.bat 'D:/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w/bin/grass80.bat'
