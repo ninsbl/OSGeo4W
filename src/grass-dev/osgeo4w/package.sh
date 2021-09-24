@@ -8,9 +8,7 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 branch=main
 
 if [ "$CI" ] ; then
-cd /d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w
-OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w
-OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
+cd "$OSGEO4W_ROOT_MSYS"
 fi
 
 source ../../../scripts/build-helpers
