@@ -10,9 +10,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     env:
-      OSGEO4W_REP: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
-      OSGEO4W_ROOT_MSYS: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w/osgeo4w"
-      OSGEO4W_PWD: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
+      PACKAGE_SRC: "/d/a/OSGeo4W/OSGeo4W/src/grass-dev/osgeo4w"
       OSGEO4W_SKIP_UPLOAD: "1"
       CI: "1"
     strategy:
@@ -30,7 +28,11 @@ jobs:
       - name: Set env
         shell: bash
         run: |
-          echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.OSGEO4W_ROOT_MSYS }})" >> $GITHUB_ENV
+          echo "OSGEO4W_ROOT=$(cygpath -amw ${{ env.PACKAGE_SRC }}/osgeo4w)" >> $GITHUB_ENV
+          echo "OSGEO4W_REP="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+          echo "OSGEO4W_ROOT_MSYS="${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
+          echo "OSGEO4W_PWD="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+
       - name: check env
         run: |
           echo "${{ env.OSGEO4W_ROOT }}"
