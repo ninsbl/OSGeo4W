@@ -8,7 +8,7 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 branch=main
 
 if [ "$CI" ] ; then
-cd "$OSGEO4W_ROOT_MSYS"
+cd "$OSGEO4W_REP"
 fi
 
 source ../../../scripts/build-helpers
