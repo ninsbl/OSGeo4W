@@ -30,9 +30,9 @@ jobs:
         run: |
           echo "PACKAGE_SRC_MS=$(cygpath -amw ${{ env.PACKAGE_SRC }})" >> $GITHUB_ENV
           echo "OSGEO4W_ROOT=${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
-          echo "OSGEO4W_REP="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
-          echo "OSGEO4W_ROOT_MSYS="${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
-          echo "OSGEO4W_PWD="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+          echo "OSGEO4W_REP=${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+          echo "OSGEO4W_ROOT_MSYS=${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
+          echo "OSGEO4W_PWD=${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
 
       - name: check env
         run: |
