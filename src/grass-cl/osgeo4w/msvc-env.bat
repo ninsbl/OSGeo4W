@@ -14,6 +14,8 @@ REM *   (at your option) any later version.                                   *
 REM *                                                                         *
 REM ***************************************************************************
 
+echo "Start"
+
 if defined PROGRAMFILES(X86) set PF86=%PROGRAMFILES(X86)%
 if not defined PF86 set PF86=%PROGRAMFILES%
 if not defined PF86 (echo PROGRAMFILES not set & goto error)
