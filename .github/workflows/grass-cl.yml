@@ -1,0 +1,54 @@
+name: GRASS_8_0_preview
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: ${{ matrix.os }} build and tests
+
+    runs-on: ${{ matrix.os }}
+    env:
+      PACKAGE_SRC: "/d/a/OSGeo4W/OSGeo4W/src/grass-cl/osgeo4w"
+      OSGEO4W_SKIP_UPLOAD: "1"
+      CI: "1"
+    strategy:
+      matrix:
+        os:
+          - windows-2019
+      fail-fast: false
+
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: actions/checkout@v2
+      - name: Set env
+        shell: bash
+        run: |
+          echo "PACKAGE_SRC_MS=$(cygpath -amw ${{ env.PACKAGE_SRC }})" >> $GITHUB_ENV
+          echo "OSGEO4W_ROOT=${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
+          echo "OSGEO4W_REP="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+          echo "OSGEO4W_ROOT_MSYS="${{ env.PACKAGE_SRC }}/osgeo4w" >> $GITHUB_ENV
+          echo "OSGEO4W_PWD="${{ env.PACKAGE_SRC }}" >> $GITHUB_ENV
+
+      - name: check env
+        run: |
+          echo "${{ env.OSGEO4W_ROOT }}"
+      # WDF kills MSVC batch's own detection of SDKs…
+      - name: Clean WDF
+        shell: cmd
+        run: |
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\lib\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\include\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\redist\wdf"
+          rmdir /s /q "%ProgramFiles(x86)%\Windows Kits\10\Tools"
+      - name: Build GRASS GIS
+        run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
+        working-directory: ${{ env.PACKAGE_SRC_MS }}
+      - name: Test executing of the grass command
+        run: .github/workflows/test_simple.bat "${{ env.OSGEO4W_ROOT }}/bin/grass80.bat"
+      - name: Run tests
+        run: .github/workflows/test_thorough.bat "${{ env.OSGEO4W_ROOT }}/bin/grass80.bat"
