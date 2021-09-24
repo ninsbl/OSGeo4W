@@ -86,9 +86,9 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
 
-	cd ../$P-$V
-
 	fetchenv msvc-env.bat
+
+	cd ../$P-$V
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
