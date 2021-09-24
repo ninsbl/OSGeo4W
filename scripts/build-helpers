@@ -99,10 +99,15 @@ declare -x finishlog
 # run a configuration batch file and source environment changes
 #
 fetchenv() {
+
+        echo "start fetchenv"
+
         local IFS
         IFS=
         batch=$1
         shift
+
+        echo "fetchenv 1"
 
         if ! [ -f "$batch" ]; then
                 echo "$batch not found"
@@ -115,6 +120,8 @@ fetchenv() {
         envdiff=$(mktemp /tmp/envdiff.XXXXXXXXXX)
         cmd /c set >$srcenv
         cmd /c call $(cygpath -w $batch) "$@" \>nul 2\>nul \& set >$dstenv
+        echo "fetchenv 2"
+
         cat <<EOF >$envdiff
 /^+++/d;
 /^[^+]/d;
