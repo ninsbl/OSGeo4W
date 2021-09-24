@@ -1,4 +1,4 @@
-name: GRASS_8_0_preview
+name: GRASS_8_0_CL
 
 on:
   - push
