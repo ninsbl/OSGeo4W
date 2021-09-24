@@ -10,8 +10,6 @@ branch=main
 : ${CC:=cl.exe}
 : ${CXX:=cl.exe}
 
-REPO=https://github.com/qgis/QGIS.git
-
 export CC CXX
 
 if [ "$CI" ] ; then
