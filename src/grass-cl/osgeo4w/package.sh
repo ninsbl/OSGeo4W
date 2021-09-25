@@ -86,7 +86,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 
 echo "A"
 
-	fetchenv msvc-env.bat
+	fetchenv "./msvc-env.bat"
 
 echo "B"
 
