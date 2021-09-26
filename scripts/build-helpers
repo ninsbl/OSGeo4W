@@ -116,6 +116,8 @@ fetchenv() {
 
         echo "fetchenv 1A"
 
+        ls /tmp/
+        mktemp -V
         srcenv=$(mktemp /tmp/srcenv.XXXXXXXXXX)
         echo "fetchenv 1B"
         dstenv=$(mktemp /tmp/dstenv.XXXXXXXXXX)
