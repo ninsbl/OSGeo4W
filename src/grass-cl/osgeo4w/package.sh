@@ -52,14 +52,13 @@ echo "PATH: $PATH"
 	export VCPATH=$(
 		vs2019env
 		echo ${PATH//\/cygdrive/}
-
+)
 
 	echo "A"
 
 	fetchenv "./msvc-env.bat"
 
 	echo "B"
-)
 
 echo "PATH: $PATH"
 
