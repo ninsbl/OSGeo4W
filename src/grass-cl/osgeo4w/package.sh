@@ -49,12 +49,16 @@ echo "OSGEO4W_ROOT: $OSGEO4W_ROOT"
 
 echo "PATH: $PATH"
 
+echo "VCPATH"
+
 	export VCPATH=$(
 		vs2019env
 		echo ${PATH//\/cygdrive/}
 )
 
-	echo "A"
+echo "VCPATH: $VCPATH"
+
+	echo "fetchenv ./msvc-env.bat"
 
 	fetchenv "./msvc-env.bat"
 
