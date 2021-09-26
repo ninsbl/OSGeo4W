@@ -39,10 +39,14 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 [ -f $msysarch ] || wget http://repo.msys2.org/distrib/x86_64/$msysarch
 [ -d msys64 ] || tar xJf $msysarch
 
+echo "PATH: $PATH"
+
 (
 	fetchenv osgeo4w/bin/o4w_env.bat
 	export OSGEO4W_ROOT_MSYS="${OSGEO4W_ROOT//\\/\/}"
 	export OSGEO4W_ROOT_MSYS="/${OSGEO4W_ROOT_MSYS:0:1}/${OSGEO4W_ROOT_MSYS:3}"
+
+echo "PATH: $PATH"
 
 	export VCPATH=$(
 		vs2019env
@@ -56,7 +60,11 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	echo "B"
 )
 
+echo "PATH: $PATH"
+
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
+
+echo "PATH: $PATH"
 
 	[ -f msys64/msys2.init ] || {
 		cmd.exe /c "bash pacman-key --init"
