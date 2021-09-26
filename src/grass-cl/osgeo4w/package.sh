@@ -47,7 +47,14 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 	export VCPATH=$(
 		vs2019env
 		echo ${PATH//\/cygdrive/}
-	)
+
+
+	echo "A"
+
+	fetchenv "./msvc-env.bat"
+
+	echo "B"
+)
 
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
 
@@ -83,12 +90,6 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 		mingw-w64-x86_64-cairo
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
-
-echo "A"
-
-	fetchenv "./msvc-env.bat"
-
-echo "B"
 
 	cd ../$P-$V
 
