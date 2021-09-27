@@ -51,11 +51,13 @@ echo "PATH: $PATH"
 
 echo "VCPATH"
 
+	export VCSDK="10.0.18362.0"
 	export VCPATH=$(
 		vs2019env
 		echo ${PATH//\/cygdrive/}
 )
 
+	vs2019env
 
 echo "VS160COMNTOOLS: $VS160COMNTOOLS"
 echo "LIB: $LIB"
@@ -79,6 +81,11 @@ echo "PATH: $PATH"
 export PATH="$VCPATH:$PATH"
 export CXX="$(cygpath -m $CXX)"
 export CC="$(cygpath -m $CC)"
+
+
+echo "CC: $CC"
+echo "CXX: $CXX"
+echo "CC: $CC"
 
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
 
