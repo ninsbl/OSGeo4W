@@ -7,8 +7,8 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 
 branch=main
 
-: ${CC:=cl.exe}
-: ${CXX:=cl.exe}
+: ${CC:=clang.exe}
+: ${CXX:=clang.exe}
 
 export CC CXX
 
@@ -108,6 +108,7 @@ echo "PATH: $PATH"
 		tar \
 		mingw-w64-x86_64-pkg-config \
 		mingw-w64-x86_64-gcc \
+		mingw-w64-clang \
 		mingw-w64-x86_64-ccache \
 		mingw-w64-x86_64-zlib \
 		mingw-w64-x86_64-libiconv \
