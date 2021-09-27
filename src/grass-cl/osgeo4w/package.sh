@@ -128,6 +128,8 @@ echo "PATH: $PATH"
 
 	cd ../$P-$V
 
+export LDFLAGS="-fopenmp=libomp"
+
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 
 echo "C"
