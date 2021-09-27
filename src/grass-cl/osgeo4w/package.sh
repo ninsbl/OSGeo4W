@@ -121,6 +121,7 @@ echo "PATH: $PATH"
 		mingw-w64-x86_64-pcre \
 		mingw-w64-x86_64-fftw \
 		mingw-w64-x86_64-lapack \
+		mingw-w64-x86_64-openmp \
 		mingw-w64-x86_64-cairo
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
