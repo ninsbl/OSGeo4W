@@ -108,7 +108,7 @@ echo "PATH: $PATH"
 		tar \
 		mingw-w64-x86_64-pkg-config \
 		mingw-w64-x86_64-gcc \
-		mingw-w64-clang \
+		mingw-w64-x86_64-clang \
 		mingw-w64-x86_64-ccache \
 		mingw-w64-x86_64-zlib \
 		mingw-w64-x86_64-libiconv \
