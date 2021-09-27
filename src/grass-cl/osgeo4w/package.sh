@@ -56,15 +56,29 @@ echo "VCPATH"
 		echo ${PATH//\/cygdrive/}
 )
 
+
+echo "VS160COMNTOOLS: $VS160COMNTOOLS"
+echo "LIB: $LIB"
+echo "INCLUDE: $INCLUDE"
+echo "PATH: $PATH"
 echo "VCPATH: $VCPATH"
 
 	echo "fetchenv ./msvc-env.bat"
 
 	fetchenv "./msvc-env.bat"
 
+echo "VS160COMNTOOLS: $VS160COMNTOOLS"
+echo "LIB: $LIB"
+echo "INCLUDE: $INCLUDE"
+echo "PATH: $PATH"
+echo "VCPATH: $VCPATH"
+
 	echo "B"
 
 echo "PATH: $PATH"
+export PATH="$VCPATH:$PATH"
+export CXX="$(cygpath -m $CXX)"
+export CC="$(cygpath -m $CC)"
 
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
 
