@@ -8,7 +8,7 @@ export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel li
 branch=main
 
 : ${CC:=clang.exe}
-: ${CXX:=clang.exe}
+: ${CXX:=clang++.exe}
 
 export CC CXX
 
