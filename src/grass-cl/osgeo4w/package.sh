@@ -129,6 +129,8 @@ echo "PATH: $PATH"
 	cd ../$P-$V
 
 export LDFLAGS="-fopenmp=libomp"
+export CFLAGS="--target=x86_64-pc-windows-msvc -fms-compatibility -fms-extensions"
+export CPPFLAGS="--target=x86_64-pc-windows-msvc -fms-compatibility -fms-extensions"
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 
