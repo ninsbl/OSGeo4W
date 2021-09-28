@@ -55,10 +55,10 @@ jobs:
         if: always()
         shell: bash
         run: |
-          echo "${{ env.PACKAGE_SRC }}/grass-dev-8.0.dev/config.log"
-          cat "${{ env.PACKAGE_SRC }}/grass-dev-8.0.dev/config.log"
-          echo "${{ env.PACKAGE_SRC }}/grass-dev-8.0.dev/configure.log"
-          cat "${{ env.PACKAGE_SRC }}/grass-dev-8.0.dev/configure.log"
+          echo "/d/a/OSGeo4W/OSGeo4W/src/grass-cl/grass-dev-8.0.dev/config.log"
+          cat "/d/a/OSGeo4W/OSGeo4W/src/grass-cl/grass-dev-8.0.dev/config.log"
+          echo "/d/a/OSGeo4W/OSGeo4W/src/grass-cl/grass-dev-8.0.dev/configure.log"
+          cat "/d/a/OSGeo4W/OSGeo4W/src/grass-cl/grass-dev-8.0.dev/configure.log"
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat "${{ env.OSGEO4W_ROOT }}/bin/grass80.bat"
       - name: Run tests
