@@ -51,6 +51,14 @@ jobs:
       - name: Build GRASS GIS
         run: C:\msys64\usr\bin\bash.exe -l (''+(Get-Location)+'\package.sh') (Get-Location)
         working-directory: ${{ env.PACKAGE_SRC_MS }}
+      - name: Print log
+        if: always()
+        shell: bash
+        run: |
+          echo "${{ env.PACKAGE_SRC }}/config.log"
+          cat "${{ env.PACKAGE_SRC }}/config.log"
+          echo "${{ env.PACKAGE_SRC }}/configure.log"
+          cat "${{ env.PACKAGE_SRC }}/configure.log"
       - name: Test executing of the grass command
         run: .github/workflows/test_simple.bat "${{ env.OSGEO4W_ROOT }}/bin/grass80.bat"
       - name: Run tests
