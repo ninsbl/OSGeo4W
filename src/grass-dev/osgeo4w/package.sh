@@ -96,6 +96,6 @@ EOF
 
 appendversions $R/setup.hint
 
-tar -C .. -cjf $R/$P-$V-$B-src.tar.bz2 osgeo4w/package.sh osgeo4w/patch
+tar -C .. -cjf $R/$P-$V-$B-src.tar.bz2 osgeo4w/package.sh
 
 endlog
