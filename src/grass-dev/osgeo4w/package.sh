@@ -39,7 +39,7 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 		echo ${PATH//\/cygdrive/}
 	)
 
-	echo "$VCPATH"
+	echo "VCPATH: $VCPATH"
 
 	export PATH="$(cygpath -a msys64/usr/bin):$PATH"
 
