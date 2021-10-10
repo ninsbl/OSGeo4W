@@ -1,16 +1,12 @@
 export P=grass
 
-export V=7.8.6RC2
+export V=7.8.6
 export B=next
 export MAINTAINER=JuergenFischer
-export BUILDDEPENDS="gdal-devel pdal-devel proj-devel geos-devel netcdf-devel libjpeg-devel libpng-devel libpq-devel libtiff-devel sqlite3-devel zstd-devel python3-ply python3-core python3-six python3-pywin32 python3-wxpython wxwidgets-devel"
-
-
+export BUILDDEPENDS="gdal-devel proj-devel geos-devel libjpeg-devel libpng-devel libpq-devel libtiff-devel sqlite3-devel zstd-devel python3-core python3-six python3-pywin32 liblas-devel python3-wxpython"
 
 if [ "$CI" ] ; then
-cd /d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w
-OSGEO4W_ROOT_MSYS=/d/a/OSGeo4W/OSGeo4W/src/grass/osgeo4w/osgeo4w
-OSGEO4W_ROOT=$(cygpath -amw "$OSGEO4W_ROOT_MSYS")
+cd "$OSGEO4W_PWD"
 fi
 
 source ../../../scripts/build-helpers
@@ -76,18 +72,11 @@ msysarch=msys2-base-x86_64-20210604.tar.xz
 		mingw-w64-x86_64-libpng \
 		mingw-w64-x86_64-pcre \
 		mingw-w64-x86_64-fftw \
-		mingw-w64-x86_64-lapack \
 		mingw-w64-x86_64-cairo
 	"
 	cmd.exe /c "$cmd" || cmd.exe /c "$cmd" || cmd.exe /c "$cmd"
 
 	cd ../$P-$V
-
-if [ "$CI" ] ; then
-	P=$(cygpath -ua "C:/Program Files (x86)\Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/")
-	sed -i "3 a export PATH=\"$P:$PATH\"" mswindows/osgeo4w/mklibs.sh
-	sed -i "s/dumpbin -exports/dumpbin \/EXPORTS/" mswindows/osgeo4w/mklibs.sh
-fi
 
 	cmd.exe /c "$(cygpath -aw $OSGEO4W_PWD/msys64/usr/bin/bash) $xtrace mswindows/osgeo4w/package.sh"
 )
@@ -102,7 +91,7 @@ cat <<EOF >$R/setup.hint
 sdesc: "GRASS GIS 7.8"
 ldesc: "Geographic Resources Analysis Support System (GRASS GIS) 7.8"
 category: Desktop
-requires: liblas $RUNTIMEDEPENDS avce00 gpsbabel gs python3-gdal python3-matplotlib libtiff python3-wxpython python3-pillow python3-pip python3-ply python3-pyopengl python3-psycopg2-binary python3-six zstd python3-pywin32 netcdf wxwidgets
+requires: liblas $RUNTIMEDEPENDS avce00 gpsbabel gs python3-gdal python3-matplotlib libtiff python3-wxpython python3-pillow python3-pip python3-ply python3-pyopengl python3-psycopg2-binary python3-six zstd python3-pywin32
 maintainer: $MAINTAINER
 EOF
 
